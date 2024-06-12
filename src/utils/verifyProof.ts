@@ -14,7 +14,7 @@ import reclaimMetadata from '../metadata/reclaim.json';
 import addresses from '../metadata/addresses.json';
 import { getGasLimit } from './dryRun';
 
-const MAX_CALL_WEIGHT = new BN(15_000_000_000).isub(BN_ONE);
+const MAX_CALL_WEIGHT = new BN(35_000_000_000).isub(BN_ONE);
 
 export const verifyProof = async (
   proof: Proof,
@@ -38,7 +38,7 @@ export const verifyProof = async (
   );
 
   const readOnlyGasLimit = api.registry.createType('WeightV2', {
-    refTime: new BN(3_000_000_000),
+    refTime: new BN(9_000_000_000),
     proofSize: MAX_CALL_WEIGHT,
   }) as WeightV2;
 
