@@ -1,7 +1,7 @@
 import { ApiPromise } from '@polkadot/api';
 import { ContractPromise } from '@polkadot/api-contract';
 import { web3FromSource } from '@polkadot/extension-dapp';
-import { Proof, Reclaim } from '@reclaimprotocol/js-sdk';
+import { Proof, transformForOnchain } from '@reclaimprotocol/js-sdk';
 import { BN, BN_ONE } from '@polkadot/util';
 import type { WeightV2 } from '@polkadot/types/interfaces';
 
@@ -27,7 +27,7 @@ export const verifyProof = async (
 
   const injector = await web3FromSource(loggedUser.meta.source);
 
-  const onChainProof = Reclaim.transformForOnchain(proof);
+  const onChainProof = transformForOnchain(proof);
   const gasLimitResult = await getGasLimit(
     api,
     loggedUser.address,
